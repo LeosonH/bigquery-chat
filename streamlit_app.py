@@ -16,12 +16,9 @@ st.write(
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
 openai_api_key = st.text_input("OpenAI API Key", type="password")
-bigquery_api_key = st.file_uploader("Upload your BigQuery API Key", type="json")
 bigquery_table_name = st.text_input("BigQuery Table Name", type="password")
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
-if not bigquery_api_key:
-    st.info("Please add your Google BigQuery API key to continue.", icon="🗝️")
 if not bigquery_table_name:
     st.info("Please add your Google BigQuery Table Name to continue.")
 else:        
