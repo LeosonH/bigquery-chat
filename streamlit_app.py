@@ -37,7 +37,7 @@ else:
 
     # Create a chat input field to allow the user to enter a message. This will display
     # automatically at the bottom of the page.
-    st.session_state.messages.append({"role": "system", "content": "You are a BigQuery SQL generator. Based on this table schema,\
+    st.session_state.messages.append({"role": "system", "content": f"You are a BigQuery SQL generator. Based on this table schema,\
                                      respond with only the SQL query needed to answer the user's question. \
                                      The table name is {bigquery_table_name}.  It includes the following columns:\
                                      order_id, customer_id, order_date, product_category, product_name, quantity, unit_price, order_status, country"})
