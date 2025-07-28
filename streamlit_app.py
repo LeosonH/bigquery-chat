@@ -1,22 +1,28 @@
 import streamlit as st
 from openai import OpenAI
 from google.cloud import bigquery
+import os
 
 # Show title and description.
 st.title("💬 Chat with BigQuery")
 st.write(
     "This is a simple chatbot that uses OpenAI's GPT-3.5 model to query your database using Natural Language. "
-    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). ")
+    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
+    "You will also need your Google BigQuery API key for your database. "
+    )
 
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
 openai_api_key = st.text_input("OpenAI API Key", type="password")
-bigquery_api_key = st.text_input("BigQuery API Key", type="password")
+bigquery_api_key = st.file_uploader("Upload your BigQuery API Key", type="json")
+bigquery_table_name = st.text_input("BigQuery Table Name", type="password")
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 if not bigquery_api_key:
     st.info("Please add your Google BigQuery API key to continue.", icon="🗝️")
+if not bigquery_table_name:
+    st.info("Please add your Google BigQuery Table Name to continue.", icon="𝄜")
 else:        
 
     # Create an OpenAI client.
@@ -56,3 +62,17 @@ else:
         with st.chat_message("assistant"):
             response = st.write_stream(stream)
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+        # BQ data pull
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = bigquery_api_key
+        bigquery_client = bigquery.Client()             
+        # QUERY = response
+        
+        #Write Query on BQ
+        QUERY = """
+        SELECT * FROM `monica-test-466516.ecommerce.orders` LIMIT 10
+          """
+        Query_Results = bigquery_client.query(QUERY)
+        data = Query_Results.to_dataframe()
+        
+        st.dataframe(data, use_container_width=True)
