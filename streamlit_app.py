@@ -5,8 +5,7 @@ from openai import OpenAI
 st.title("💬 Chat with BigQuery")
 st.write(
     "This is a simple chatbot that uses OpenAI's GPT-3.5 model to query your database using Natural Language. "
-    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). ")."
-)
+    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). ")
 
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
