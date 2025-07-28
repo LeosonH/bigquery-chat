@@ -1,5 +1,6 @@
 import streamlit as st
 from openai import OpenAI
+from google.oauth2 import service_account
 from google.cloud import bigquery
 import os
 
@@ -64,8 +65,10 @@ else:
         st.session_state.messages.append({"role": "assistant", "content": response})
 
         # BQ data pull
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = bigquery_api_key
-        bigquery_client = bigquery.Client()             
+        credentials = service_account.Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"]
+        )
+        bigquery_client = bigquery.Client(credentials=credentials)             
         # QUERY = response
         
         #Write Query on BQ
