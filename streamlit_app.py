@@ -69,9 +69,7 @@ else:
         # QUERY = response
         
         #Write Query on BQ
-        QUERY = """
-        SELECT * FROM `monica-test-466516.ecommerce.orders` LIMIT 10
-          """
+        QUERY = f"SELECT * FROM {bigquery_table_name} LIMIT 10"
         Query_Results = bigquery_client.query(QUERY)
         data = Query_Results.to_dataframe()
         
