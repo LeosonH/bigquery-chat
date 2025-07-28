@@ -1,5 +1,6 @@
 import streamlit as st
 from openai import OpenAI
+from google.cloud import bigquery
 
 # Show title and description.
 st.title("💬 Chat with BigQuery")
@@ -11,6 +12,7 @@ st.write(
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
 openai_api_key = st.text_input("OpenAI API Key", type="password")
+bigquery_api_key = st.text_input("BigQuery API Key", type="password")
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
