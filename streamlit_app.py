@@ -29,7 +29,10 @@ else:
     # Create a session state variable to store the chat messages. This ensures that the
     # messages persist across reruns.
     if "messages" not in st.session_state:
-        st.session_state.messages = []
+        st.session_state.messages = [{"role": "system", "content": "You are a BigQuery SQL generator. Based on this table schema,\
+                                     respond with only the SQL query needed to answer the user's question. \
+                                     The table name is {bigquery_table_name}.  It includes the following columns:\
+                                     order_id, customer_id, order_date, product_category, product_name, quantity, unit_price, order_status, country"}]
 
     # Display the existing chat messages via `st.chat_message`.
     for message in st.session_state.messages:
