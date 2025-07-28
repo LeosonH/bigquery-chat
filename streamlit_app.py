@@ -67,7 +67,7 @@ else:
         )
         bigquery_client = bigquery.Client(credentials=credentials)             
         QUERY = response
-        
+        print(QUERY)
         #Write Query on BQ
         #QUERY = f"SELECT * FROM {bigquery_table_name} LIMIT 10"
         Query_Results = bigquery_client.query(QUERY)
