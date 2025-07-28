@@ -22,7 +22,7 @@ if not openai_api_key:
 if not bigquery_api_key:
     st.info("Please add your Google BigQuery API key to continue.", icon="🗝️")
 if not bigquery_table_name:
-    st.info("Please add your Google BigQuery Table Name to continue.", icon="𝄜")
+    st.info("Please add your Google BigQuery Table Name to continue.")
 else:        
 
     # Create an OpenAI client.
