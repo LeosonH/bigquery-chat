@@ -15,7 +15,9 @@ openai_api_key = st.text_input("OpenAI API Key", type="password")
 bigquery_api_key = st.text_input("BigQuery API Key", type="password")
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
-else:
+if not bigquery_api_key:
+    st.info("Please add your Google BigQuery API key to continue.", icon="🗝️")
+else:        
 
     # Create an OpenAI client.
     client = OpenAI(api_key=openai_api_key)
