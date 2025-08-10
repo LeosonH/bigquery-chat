@@ -4,6 +4,9 @@ from google.oauth2 import service_account
 from google.cloud import bigquery
 import os
 
+# Adding a button
+st.link_button("LinkedIn","http://www.linkedin.com")
+
 # Show title and description.
 st.title("💬 Chat with BigQuery")
 st.write(
