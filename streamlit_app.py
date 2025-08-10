@@ -6,6 +6,8 @@ import os
 
 # Adding a button
 st.link_button("LinkedIn","http://www.linkedin.com")
+st.link_button("LinkedIn","http://www.github.com")
+st.write("Monica Sharma. 2025")
 
 # Show title and description.
 st.title("💬 Chat with BigQuery")
