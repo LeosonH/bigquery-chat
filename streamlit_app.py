@@ -7,7 +7,7 @@ import os
 # Show title and description.
 st.title("💬 Chat with BigQuery")
 st.write(
-    "This is a simple chatbot that uses OpenAI's GPT-3.5 model to query your database using Natural Language. "
+    "This is a chatbot that uses OpenAI's GPT-3.5 model to query your database using Natural Language. "
     "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
     )
 
@@ -49,7 +49,8 @@ else:
             messages= [{"role": "system", "content": f"You are a BigQuery SQL generator. Based on this table schema,\
                          respond with only the SQL query needed to answer the user's question. \
                          The table name is {bigquery_table_name}.  It includes the following columns:\
-                         order_id, customer_id, order_date, product_category, product_name, quantity, unit_price, order_status, country"}] + 
+                         Vendor_group, Vendor_service, Analysis_type, Cloud_region, Fin_reporting_products, Org_name, Product_instance_type, Usage_commitment_type, \
+                         Usage_date, Total_usage_cost, SKU_numbers, Count_of_machine, Folders, Unit_price"}] + 
                       [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True,
         )
