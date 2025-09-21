@@ -4,6 +4,14 @@ from google.oauth2 import service_account
 from google.cloud import bigquery
 import os
 
+# Adding image
+st.image("https://global.discourse-cdn.com/codecademy/original/5X/3/c/8/5/3c85feecb4eb52a4d69ef0891cfbc495a1da7174.png", width=360)
+
+# Adding a button
+st.link_button("LinkedIn","http://www.linkedin.com")
+st.link_button("Github","http://www.github.com")
+st.write("Monica Sharma. 2025")
+
 # Show title and description.
 st.title("💬 Chat with BigQuery")
 st.write(
